@@ -1,0 +1,100 @@
+VERSION 5.00
+Begin VB.PropertyPage General1 
+   Caption         =   "Settings"
+   ClientHeight    =   3780
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   6285
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   3780
+   ScaleWidth      =   6285
+   Begin VB.Frame frmLine 
+      Caption         =   "Select line to monitor"
+      Height          =   2835
+      Left            =   165
+      TabIndex        =   0
+      Top             =   270
+      Width           =   5955
+      Begin VB.ComboBox cmbLineID 
+         Height          =   315
+         Left            =   1365
+         Style           =   2  'Dropdown List
+         TabIndex        =   2
+         Top             =   510
+         Width           =   705
+      End
+      Begin VB.Label lblLineName 
+         BackStyle       =   0  'Transparent
+         BorderStyle     =   1  'Fixed Single
+         Height          =   900
+         Left            =   1350
+         TabIndex        =   4
+         Top             =   1050
+         Width           =   4365
+      End
+      Begin VB.Label Label2 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Line Name"
+         Height          =   270
+         Left            =   375
+         TabIndex        =   3
+         Top             =   1050
+         Width           =   855
+      End
+      Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Line ID"
+         Height          =   225
+         Left            =   630
+         TabIndex        =   1
+         Top             =   540
+         Width           =   570
+      End
+   End
+End
+Attribute VB_Name = "General1"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+'***********************************************************************
+'* Module:  General1.pag
+'* Purpose: Property page for TAPI line setting
+'*
+'* Author:  Sumanta Ray
+'* Email:   chandsumant@hotmail.com
+'* Date:    14/07/2005
+'* Copyright (c) 2003-2005 Sumanta Ray. All rights reserved
+'***********************************************************************
+
+Private Sub PropertyPage_ApplyChanges()
+    On Error Resume Next
+    SelectedControls(0).LineID = cmbLineID.ListIndex
+End Sub
+
+Private Sub PropertyPage_Initialize()
+'
+End Sub
+
+Private Sub cmbLineID_Click()
+    Changed = True
+    lblLineName.Caption = LineNames(cmbLineID.ListIndex)
+End Sub
+
+Private Sub PropertyPage_SelectionChanged()
+    On Error GoTo errh
+    Dim l As Integer
+    With cmbLineID
+        .Clear
+        For l = 0 To SelectedControls(0).NumberOfLines - 1
+            DoEvents
+            .AddItem l
+        Next
+        .ListIndex = SelectedControls(0).LineID
+        'lblLineName.Caption = SelectedControls(0).LineName
+        lblLineName.Caption = LineNames(.ListIndex)
+    End With
+    Exit Sub
+errh:
+    WriteToLog "Error:::" & Err.Description & " @ PropertyPage_SelectionChanged"
+End Sub
