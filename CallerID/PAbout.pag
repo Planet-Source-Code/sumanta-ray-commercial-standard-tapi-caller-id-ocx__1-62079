@@ -1,0 +1,232 @@
+VERSION 5.00
+Begin VB.PropertyPage PAbout 
+   Caption         =   "About"
+   ClientHeight    =   3780
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   6285
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   3780
+   ScaleWidth      =   6285
+   Begin VB.Frame Frame2 
+      Caption         =   "Author"
+      Height          =   630
+      Left            =   270
+      TabIndex        =   7
+      Top             =   2730
+      Width           =   5715
+      Begin VB.Label Label9 
+         BackStyle       =   0  'Transparent
+         Caption         =   "E-Mail:"
+         Height          =   225
+         Left            =   2940
+         TabIndex        =   10
+         Top             =   255
+         Width           =   660
+      End
+      Begin VB.Label Label5 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Name: Sumanta Ray"
+         Height          =   195
+         Left            =   255
+         TabIndex        =   9
+         Top             =   255
+         Width           =   1665
+      End
+      Begin VB.Label Label6 
+         BackStyle       =   0  'Transparent
+         Caption         =   "chandsumant@hotmail.com"
+         Height          =   240
+         Left            =   3480
+         MouseIcon       =   "PAbout.pgx":0000
+         MousePointer    =   99  'Custom
+         TabIndex        =   8
+         Top             =   255
+         Width           =   2055
+      End
+   End
+   Begin VB.Frame Frame1 
+      Caption         =   "About TAPICallerID"
+      Height          =   1590
+      Left            =   285
+      TabIndex        =   3
+      Top             =   1110
+      Width           =   5700
+      Begin VB.Label Label11 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Note:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
+         Height          =   225
+         Left            =   315
+         TabIndex        =   12
+         Top             =   900
+         Width           =   525
+      End
+      Begin VB.Label Label10 
+         BackStyle       =   0  'Transparent
+         Caption         =   $"PAbout.pgx":030A
+         Height          =   600
+         Left            =   315
+         TabIndex        =   11
+         Top             =   900
+         Width           =   5325
+      End
+      Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
+         Caption         =   $"PAbout.pgx":03E7
+         Height          =   645
+         Left            =   315
+         TabIndex        =   4
+         Top             =   255
+         Width           =   5340
+      End
+   End
+   Begin VB.Label Label8 
+      BackStyle       =   0  'Transparent
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   255
+      Left            =   2475
+      TabIndex        =   6
+      Top             =   3450
+      Width           =   240
+   End
+   Begin VB.Label Label7 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Copyright     2003-2005 Sumanta Ray"
+      Height          =   225
+      Left            =   1770
+      TabIndex        =   5
+      Top             =   3450
+      Width           =   2745
+   End
+   Begin VB.Label Label3 
+      BackStyle       =   0  'Transparent
+      Height          =   225
+      Left            =   1905
+      TabIndex        =   2
+      Top             =   840
+      Width           =   1905
+   End
+   Begin VB.Label Label2 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Caller ID ocx"
+      BeginProperty Font 
+         Name            =   "System"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Left            =   1875
+      TabIndex        =   1
+      Top             =   540
+      Width           =   1845
+   End
+   Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "TAPICallerID"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   14.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00000000&
+      Height          =   435
+      Left            =   1875
+      TabIndex        =   0
+      Top             =   150
+      Width           =   2730
+   End
+   Begin VB.Image Image1 
+      Appearance      =   0  'Flat
+      BorderStyle     =   1  'Fixed Single
+      Height          =   960
+      Left            =   285
+      Picture         =   "PAbout.pgx":04BD
+      Stretch         =   -1  'True
+      Top             =   105
+      Width           =   1305
+   End
+End
+Attribute VB_Name = "PAbout"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+'*************************************************************
+'* Module:  PAbout.pag                                       *
+'* Purpose: Property page - Description About the control    *
+'*                                                           *
+'* Author:  Sumanta Ray                                      *
+'* Email:   chandsumant@hotmail.com                          *
+'* Date:    14/07/2004                                       *
+'* Copyright (c) 2003-2005 Sumanta Ray. All rights reserved  *
+'*************************************************************
+
+
+Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hWnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
+
+Private Sub Frame2_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Label6.FontUnderline = False
+    Label6.ForeColor = &H0& '(Black)
+End Sub
+
+Private Sub Label6_Click()
+    On Error Resume Next
+    ShellExecute PropertyPage.hWnd, "open", "mailto:" & Trim(Label6.Caption), vbNullString, vbNullString, 5&
+End Sub
+
+Private Sub Label6_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Label6.FontUnderline = True
+    Label6.ForeColor = &HFF0000 '(Blue)
+End Sub
+
+Private Sub Label4_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Label6.FontUnderline = False
+    Label6.ForeColor = &H0& '(Blue)
+End Sub
+
+Private Sub Label5_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Label6.FontUnderline = False
+    Label6.ForeColor = &H0& '(Blue)
+End Sub
+
+Private Sub Label9_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Label6.FontUnderline = False
+    Label6.ForeColor = &H0& '(Black)
+End Sub
+
+Private Sub PropertyPage_Initialize()
+    Label3.Caption = "Version: " & App.Major & "." & App.Minor & "." & App.Revision
+    Label8.Caption = Chr(169)
+End Sub
+
+Private Sub PropertyPage_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
+    Label6.FontUnderline = False
+    Label6.ForeColor = &H0& '(Black)
+End Sub
+
